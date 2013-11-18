@@ -143,7 +143,7 @@ Edit the /etc/fstab to look this:
 ```
 ${bootfs}	      /boot			                ext2    noauto,noatime          1 2
 ${rootfs}	      /			                    ext4    noatime                 0 1
-none		          /var/tmp/portage	       tmpfs	  size=1024M,noatime	     0 0
+none            /var/tmp/portage        tmpfs   size=1024M,noatime      0 0
 ```
 
 Do notice that the path where Portage stores its temporary files is set up in
