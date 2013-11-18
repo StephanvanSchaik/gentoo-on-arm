@@ -10,7 +10,7 @@ kernel is sunxi_cedar_mod. You can load this by issuing the following command:
 modprobe sunxi_cedar_mod
 ```
 
-If you always want the module to be loaded, then add the following line to
+If you always want the module to be loaded, then add the module to
 /etc/conf.d/modules:
 
 ```
