@@ -170,7 +170,7 @@ sys-devel/gcc notmpfs.conf
 www-client/firefox notmpfs.conf
 ```
 
-## Setting up the hostname and network settings.
+## Configuring the network settings.
 
 The ethernet driver may not be loaded automatically, in that case you can
 modprobe it:
@@ -201,5 +201,24 @@ For everything else refer to the
 
 # Building the Linux kernel.
 
+Since the Cubieboard 2 isn't being fully supported by the mainline Linux kernel
+yet, we'll be cloning the sunxi-linux repository:
 
+```
+git clone git://github.com/linux-sunxi/linux-sunxi.git
+```
+
+Now that we have cloned the kernel, we have to check out the right branch, for
+the Cubieboard 2 the sunxi-3.4 branch is fine. In addition to that we'll need a
+good default configuration for the kernel, since the Cubieboard 2 uses an
+Allwinner A20, we'll be using sun7i_defconfig:
+
+```
+cd linux-sunxi
+git checkout --track origin/sunxi-3.4
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make sun7i_defconfig
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make uImage modules
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make
+INSTALL_MOD_PATH=${rootfs} modules_install
+```
 
