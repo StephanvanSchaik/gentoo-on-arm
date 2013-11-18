@@ -1,6 +1,8 @@
 # gentoo-on-arm
 
 
-Documentation for installing Gentoo Linux on various ARM devices.
+Documentation for installing Gentoo Linux on various ARM devices. These are the
+devices I do own and have documented so far:
 
- - [Cubieboard2](cubieboard2).
+ - [Cubieboard 2](cubieboard2).
+
