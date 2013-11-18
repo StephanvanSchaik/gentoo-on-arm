@@ -231,6 +231,10 @@ mount ${bootfs} /mnt/gentoo/boot
 cp arch/arm/boot/uImage /mnt/gentoo/boot/
 ```
 
+# ...
+
+TODO: write the part on boot.scr and the script stuff.
+
 # Finalising.
 
 Just unmount the two mounted partitions:
