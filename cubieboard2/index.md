@@ -20,7 +20,7 @@ The current status of running Gentoo Linux of the device can be found
 
 # Installing Gentoo.
 
- - [Installing and setting up X11](x11.md).
- - [Installing and setting up hardware-accelerated video
-   decoding](video-decoding.md).
+ - [u-boot, Linux and stage3](gentoo.md).
+ - [X11](x11.md).
+ - [Hardware-accelerated video-decoding using VDPAU](video-decoding.md).
 
