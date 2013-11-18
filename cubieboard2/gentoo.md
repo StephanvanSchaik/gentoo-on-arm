@@ -126,8 +126,80 @@ dd if=/dev/zero of=${disk} bs=1024 count=128 seek=552
 
 # Setting up the root partition.
 
+Choose your [http://www.gentoo.org/main/en/mirrors2.xml](favourite mirror) to
+download the armv7a-hardfloat-linux-gnueabi stage3 tarball from, and extract it
+to your root partition upon mounting it:
 
+```
+mkdir -p /mnt/gentoo/
+mount ${rootfs} /mnt/gentoo/
+tar xjpf stage3-armv7a_hardfp-*.tar.bz2 -C /mnt/gentoo
+```
+
+## Setting up fstab.
+
+Edit the /etc/fstab to look this:
+
+```
+${bootfs}	/boot			ext2
+${rootfs}	/			ext4
+none		/var/tmp/portage	tmpfs	size=1024M,noatime	0 0
+```
+
+Do notice that the path where Portage stores its temporary files is set up in
+such a fashion that it will use tmpfs (i.e. that it will use the board's
+memory). This set-up is recommended as it will lengthen the durability of your
+storage device, and as it will speed up the compilation time with a significant
+amount.
+
+However, some packages, such as Firefox and gcc, may use more of this space than
+there is memory available. For these we'll use a configuration that tells
+Portage to use another location (this may be on the rootfs, or a symbolic link
+to another, faster device), create /etc/portage/env/notmpfs.conf with the
+following contents:
+
+```
+PORTAGE_TMPDIR="/var/tmp/notmpfs"
+```
+
+Packages that should use this configuration can then be added to
+/etc/portage/package.env, for instance:
+
+```
+sys-devel/gcc notmpfs.conf
+www-client/firefox notmpfs.conf
+```
+
+## Setting up the hostname and network settings.
+
+The ethernet driver may not be loaded automatically, in that case you can
+modprobe it:
+
+```
+modprobe sunxi_emac
+```
+
+Or you can add the module to /etc/conf.d/modules, if you want it to be always
+loaded on boot:
+
+```
+modules="... sunxi_emac"
+```
+
+Another thing to keep in mind is that the device does not have an EEPROM with
+information on the network interface controller such as the MAC-address.
+Therefore a random MAC-address is generated upon boot, however, if you desire to
+use a static MAC-address, you can set one in /etc/conf.d/net:
+
+```
+mac_eth0="00:00:00:00:00:00"
+```
+
+For everything else refer to the
+[http://www.gentoo.org/doc/en/handbook/handbook-arm.xml?part=1&chap=8#doc_chap2]
+(Networking Information) section in the Gentoo handbook for ARM.
 
 # Building the Linux kernel.
+
 
 
