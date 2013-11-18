@@ -12,7 +12,7 @@ The Cubieboard 2 is enhanced with the following hardware:
  - 10/100 ethernet.
  - 2x USB Host, USB OTG.
  - Infrared.
- - 96 extension pins, including I^2C, SPI, LVDS.
+ - 96 extension pins, including I<sup>2</sup>C, SPI, LVDS.
  - Dimensions: 10 cm x 6 cm.
 
 The current status of running Gentoo Linux of the device can be found
