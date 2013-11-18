@@ -224,18 +224,57 @@ INSTALL_MOD_PATH=/mnt/gentoo modules_install
 
 # Installing the kernel.
 
-Installing the kernel is straight-forward:
+Installing the kernel is pretty straight-forward:
 
 ```
 mount ${bootfs} /mnt/gentoo/boot
 cp arch/arm/boot/uImage /mnt/gentoo/boot/
 ```
 
-# ...
+# Further configuration.
 
-TODO: write the part on boot.scr and the script stuff.
+The kernel also requires a configuration file that tells a few things about the
+hardware on the board, but it has to be in a specific format for the kernel in
+order for it to be able to use it. Fortunately, there is a tool named fex2bin
+that will convert it to the appropriate format:
+
+```
+git clone git://github.com/sunxi-tools.git
+cd sunxi-tools
+make fex2bin
+```
+
+After fex2bin has been compiled, we can clone the repository that contains the
+various board configurations:
+
+```
+git clone git://github.com/linux-sunxi/sunxi-boards.git
+```
+
+In our case we are interested in sunxi-boards/sys_config/a20/cubieboard2.fex,
+feed it to fex2bin, so that we can get the script.bin file, and store it on the
+boot partition:
+
+```
+fex2bin cubieboard2.fex /mnt/gentoo/boot/script.bin
+```
 
 # Finalising.
+
+The last step is writing the boot script that loads the hardware configuration
+and boots the kernel. The following boot script will do that, as well as setting
+up both a serial console as a framebuffer console. The resolution to be set for
+the framebuffer will be determined by using EDID, and if that fails, it will
+fallback to the resolution specified in the boot script. Edit
+/mnt/gentoo/boot/boot.cmd:
+
+```
+setenv bootargs console=tty0 hdmi.audio=EDID:0 disp.screen0_output_mode=EDID:1920x1080p60 console=ttyS0,115200 root=${rootfs} rootwait panic=10 ${extra}
+fatload mmc 0 0x43000000 script.bin
+fatload mmc 0 0x48000000 uImage
+bootm 0x48000000
+
+```
 
 Just unmount the two mounted partitions:
 
