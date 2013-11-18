@@ -25,3 +25,9 @@
  - HDMI audio.
  - Mali in general (TODO: wait for Lima).
 
+# Upstream progress
+
+If you are, just like me, interested in the upstream progress, so that we can
+eventually get to use gentoo-sources instead of the fork, then you should keep
+your eye on http://linux-sunxi.org/Linux_mainlining_effort
+
