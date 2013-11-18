@@ -24,6 +24,7 @@
  - SATA (TODO: get the HDD add-on).
  - HDMI audio.
  - Mali in general (TODO: wait for Lima).
+ - Anything else that hasn't been listed here (such as GPIO, USB gadgets).
 
 # Upstream progress
 
