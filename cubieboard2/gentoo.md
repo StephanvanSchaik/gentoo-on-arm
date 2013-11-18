@@ -219,6 +219,24 @@ git checkout --track origin/sunxi-3.4
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make sun7i_defconfig
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make uImage modules
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make
-INSTALL_MOD_PATH=${rootfs} modules_install
+INSTALL_MOD_PATH=/mnt/gentoo modules_install
+```
+
+# Installing the kernel.
+
+Installing the kernel is straight-forward:
+
+```
+mount ${bootfs} /mnt/gentoo/boot
+cp arch/arm/boot/uImage /mnt/gentoo/boot/
+```
+
+# Finalising.
+
+Just unmount the two mounted partitions:
+
+```
+umount /mnt/gentoo/boot
+umount /mnt/gentoo/
 ```
 
