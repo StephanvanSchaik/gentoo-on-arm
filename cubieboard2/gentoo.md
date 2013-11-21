@@ -141,9 +141,9 @@ tar xjpf stage3-armv7a_hardfp-*.tar.bz2 -C /mnt/gentoo
 Edit the /etc/fstab to look this:
 
 ```
-${bootfs}	/boot			ext2
-${rootfs}	/			ext4
-none		/var/tmp/portage	tmpfs	size=1024M,noatime	0 0
+${bootfs}	      /boot			                ext2    noauto,noatime          1 2
+${rootfs}	      /			                    ext4    noatime                 0 1
+none            /var/tmp/portage        tmpfs   size=1024M,noatime      0 0
 ```
 
 Do notice that the path where Portage stores its temporary files is set up in
