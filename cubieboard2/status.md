@@ -2,29 +2,30 @@
 
  - MicroSD.
  - USB.
- - Framebuffer console (HDMI output with support for EDID).
+ - /dev/fb0 using HDMI with support for EDID parsing.
  - X11 using fbturbo.
  - Hardware-accelerated video decoding using the open-source sunxi-vdpau
    implementation for MPEG-1, MPEG-2 and H.264.
- - Ethernet.
- - Audio using the on-board audio chipset.
+ - 10/100 ethernet.
+ - Audio using both the chipset and HDMI audio.
 
 # What doesn't work?
 
- - The LEDs aren't controllable via sunxi/linux-3.4.
+ - The LEDs aren't controllable in sunxi/linux-3.4 (I have figured this
+   one out; I will test this sometime soon).
  - There is an issue where the monitor blanks for a second, a few minutes upon
    booting.
- - DPMS, for some monitors upon turning off, they can't be turned on again
-   using DPMS.
+ - For some monitors DPMS may not work properly. If that is the case with your
+   monitor, then try turning off DPMS.
 
 # What hasn't been tested?
 
  - Anything that uses proprietary drivers (such as video decoding and OpenGL
    ES).
- - SATA (TODO: get the HDD add-on).
- - HDMI audio.
- - Mali in general (TODO: wait for Lima).
- - Anything else that hasn't been listed here (such as GPIO, USB gadgets).
+ - SATA (I have *ordered* the hardware necessary for this).
+ - Mali (I will do this once there is an official release of lima).
+ - USB gadgets (they may work, I still have to try it).
+ - Anything else that hasn't been listed here (such as GPIO).
 
 # Upstream progress
 
