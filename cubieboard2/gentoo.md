@@ -11,10 +11,10 @@ emerge -av crossdev
 ```
 
 Then we can build a stable tool chain for the target
-(armv7-hardfloat-linux-gnueabi):
+(armv7a-hardfloat-linux-gnueabi):
 
 ```
-crossdev -S -t armv7-hardfloat-linux-gnueabi
+crossdev -S -t armv7a-hardfloat-linux-gnueabi
 ```
 
 Grab a cup of coffee, as this may take a while.
@@ -218,8 +218,7 @@ cd linux-sunxi
 git checkout --track origin/sunxi-3.4
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make sun7i_defconfig
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make uImage modules
-CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make
-INSTALL_MOD_PATH=/mnt/gentoo modules_install
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make INSTALL_MOD_PATH=/mnt/gentoo modules_install
 ```
 
 # Installing the kernel.
@@ -239,7 +238,7 @@ order for it to be able to use it. Fortunately, there is a tool named fex2bin
 that will convert it to the appropriate format:
 
 ```
-git clone git://github.com/sunxi-tools.git
+git clone git://github.com/linux-sunxi/sunxi-tools.git
 cd sunxi-tools
 make fex2bin
 ```
@@ -273,7 +272,12 @@ setenv bootargs console=tty0 hdmi.audio=EDID:0 disp.screen0_output_mode=EDID:192
 fatload mmc 0 0x43000000 script.bin
 fatload mmc 0 0x48000000 uImage
 bootm 0x48000000
+```
 
+And make an image of it:
+```
+cd /mnt/gentoo/boot/
+mkimage -C none -A arm -T script -d boot.cmd boot.scr
 ```
 
 Just unmount the two mounted partitions:
