@@ -1,6 +1,7 @@
 # What does work?
 
  - MicroSD.
+ - SATA (tested with a 3.5" HDD, you have to be careful with the current though).
  - USB.
  - /dev/fb0 using HDMI with support for EDID parsing.
  - X11 using fbturbo.
@@ -22,7 +23,6 @@
 
  - Anything that uses proprietary drivers (such as video decoding and OpenGL
    ES).
- - SATA (I have *ordered* the hardware necessary for this).
  - Mali (I will do this once there is an official release of lima).
  - USB gadgets (they may work, I still have to try it).
  - Anything else that hasn't been listed here (such as GPIO).
