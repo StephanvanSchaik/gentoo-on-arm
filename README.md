@@ -9,6 +9,6 @@ devices I do own and have documented so far:
 
  - Pandaboard ES (vulcan).
  - Cubieboard 2 (himeros).
- - Cubietruck [ordered].
+ - Cubietruck (pothos).
  - IFC6410 [about to order/ordered].
 
