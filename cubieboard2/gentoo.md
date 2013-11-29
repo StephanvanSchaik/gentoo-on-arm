@@ -195,9 +195,8 @@ use a static MAC-address, you can set one in /etc/conf.d/net:
 mac_eth0="00:00:00:00:00:00"
 ```
 
-For everything else refer to the
-[http://www.gentoo.org/doc/en/handbook/handbook-arm.xml?part=1&chap=8#doc_chap2]
-(Networking Information) section in the Gentoo handbook for ARM.
+For everything else refer to the [Networking Information](http://www.gentoo.org/doc/en/handbook/handbook-arm.xml?part=1&chap=8#doc_chap2)
+section in the Gentoo handbook for ARM.
 
 # Building the Linux kernel.
 
