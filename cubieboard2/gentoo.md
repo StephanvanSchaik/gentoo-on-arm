@@ -52,8 +52,8 @@ u-boot-sunxi/boards.cfg.
 If everything went all right, you should now have two binary files that we will
 be using:
 
- - u-boot-sunxi/u-boot.bin
- - u-boot-sunxi/spl/u-boot-spl.bin
+ - u-boot-sunxi/u-boot.img
+ - u-boot-sunxi/spl/sunxi-spl.bin
 
 TODO: is using mainline u-boot feasible?
 
@@ -109,13 +109,13 @@ The region with offset 8K and size 32K contains the SPL initial loader, so let's
 write that away to the disk:
 
 ```
-dd if=u-boot-sunxi/spl/u-boot-spl.bin of=${disk} bs=1024 seek=8
+dd if=u-boot-sunxi/spl/sunxi-spl.bin of=${disk} bs=1024 seek=8
 ```
 
 The next region of 512K contains u-boot:
 
 ```
-dd if=u-boot-sunxi/u-boot.bin of=${disk} bs=1024 seek=40
+dd if=u-boot-sunxi/u-boot.img of=${disk} bs=1024 seek=40
 ```
 
 Finally, the next 128K contains the environment, let's clear that:
