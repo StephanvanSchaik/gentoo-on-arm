@@ -3,7 +3,7 @@
  - MicroSD.
  - SATA (tested with a 3.5" HDD, you have to be careful with the current though).
  - USB.
- - /dev/fb0 using HDMI with support for EDID parsing.
+ - /dev/fb0 using HDMI.
  - X11 using fbturbo.
  - Hardware-accelerated video decoding using the open-source sunxi-vdpau
    implementation for MPEG-1, MPEG-2 and H.264.
@@ -14,7 +14,9 @@
 # What doesn't work?
 
  - There may be some issues with the sunxi-video driver, mostly because the
-   implementation is cumbersome.
+   implementation is cumbersome. If you are having issues such as random
+   monitor blanking, kernel panics or anything else that may be caused by
+   the sunxi-video driver, then try disabling EDID.
 
 # What hasn't been tested?
 
