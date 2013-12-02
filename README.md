@@ -11,4 +11,4 @@ devices I do own and have documented so far:
  - Cubieboard 2 (himeros).
  - Cubietruck (pothos).
  - IFC6410 [about to order/ordered].
-
+ - Samsung ARM Chromebook [ordered].
