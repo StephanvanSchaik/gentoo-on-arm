@@ -14,9 +14,7 @@
 # What doesn't work?
 
  - There may be some issues with the sunxi-video driver, mostly because the
-   implementation is cumbersome. If you are having issues such as random
-   monitor blanking, kernel panics or anything else that may be caused by
-   the sunxi-video driver, then try disabling EDID.
+   implementation is cumbersome.
 
 # What hasn't been tested?
 
