@@ -30,7 +30,7 @@ the kernel and loading the kernel.
 The Cubieboard 2 has its very own fork for u-boot, let's clone it:
 
 ```
-git clone https://github.com/linux-sunxi/u-boot-sunxi.git
+git clone --depth 1 https://github.com/linux-sunxi/u-boot-sunxi.git
 ```
 
 Now that the fork has been cloned, we can build the binaries that we need to
@@ -201,10 +201,11 @@ section in the Gentoo handbook for ARM.
 # Building the Linux kernel.
 
 Since the Cubieboard 2 isn't being fully supported by the mainline Linux kernel
-yet, we'll be cloning the sunxi-linux repository:
+yet, we'll be cloning the sunxi-linux repository, or more specifically the latest
+revision of the sunxi-3.4 branch:
 
 ```
-git clone git://github.com/linux-sunxi/linux-sunxi.git
+git clone --depth 1 git://github.com/linux-sunxi/linux-sunxi.git -b sunxi-3.4
 ```
 
 Now that we have cloned the kernel, we have to check out the right branch, for
@@ -214,7 +215,6 @@ Allwinner A20, we'll be using sun7i_defconfig:
 
 ```
 cd linux-sunxi
-git checkout --track origin/sunxi-3.4
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make sun7i_defconfig
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make uImage modules
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make INSTALL_MOD_PATH=/mnt/gentoo modules_install
@@ -237,7 +237,7 @@ order for it to be able to use it. Fortunately, there is a tool named fex2bin
 that will convert it to the appropriate format:
 
 ```
-git clone git://github.com/linux-sunxi/sunxi-tools.git
+git clone --depth 1 git://github.com/linux-sunxi/sunxi-tools.git
 cd sunxi-tools
 make fex2bin
 ```
@@ -246,7 +246,7 @@ After fex2bin has been compiled, we can clone the repository that contains the
 various board configurations:
 
 ```
-git clone git://github.com/linux-sunxi/sunxi-boards.git
+git clone --depth 1 git://github.com/linux-sunxi/sunxi-boards.git
 ```
 
 In our case we are interested in sunxi-boards/sys_config/a20/cubieboard2.fex,
