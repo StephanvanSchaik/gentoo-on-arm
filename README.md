@@ -5,10 +5,11 @@ devices I do own and have documented so far:
 
  - [Cubieboard 2](cubieboard2/index.md).
 
-# Devices.
+# ARMv7a devices.
 
  - Pandaboard ES (vulcan).
  - Cubieboard 2 (himeros).
  - Cubietruck (pothos).
- - IFC6410 [about to order/ordered].
- - Samsung ARM Chromebook [ordered].
+ - Samsung ARM Chromebook (eros).
+ - IFC6410 [ordered].
+
