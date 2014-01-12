@@ -268,8 +268,8 @@ fallback to the resolution specified in the boot script. Edit
 
 ```
 setenv bootargs console=tty0 hdmi.audio=EDID:0 disp.screen0_output_mode=EDID:1920x1080p60 console=ttyS0,115200 root=${rootfs} rootwait panic=10 ${extra}
-fatload mmc 0 0x43000000 script.bin
-fatload mmc 0 0x48000000 uImage
+ext2load mmc 0 0x43000000 script.bin
+ext2load mmc 0 0x48000000 uImage
 bootm 0x48000000
 ```
 
