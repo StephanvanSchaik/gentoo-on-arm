@@ -38,9 +38,9 @@ boot the system:
 
 ```
 cd u-boot-sunxi
-CROSS_COMPILE=arm-hardfloat-linux-gnueabi- make distclean
-CROSS_COMPILE=arm-hardfloat-linux-gnueabi- make Cubieboard2_config
-CROSS_COMPILE=arm-hardfloat-linux-gnueabi- make
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- make distclean
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- make Cubieboard2_config
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- make
 ```
 
 If you are interested in booting via a USB-device rather than a SD-card, then
