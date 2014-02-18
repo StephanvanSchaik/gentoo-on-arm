@@ -38,7 +38,7 @@ blocked, you can unblock them by adding the following lines to
 /etc/portage/package.keywords:
 
 ```
-x11-libs/vdpau **
+x11-libs/libvdpau **
 x11-misc/vdpauinfo **
 ```
 
