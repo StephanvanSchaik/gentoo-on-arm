@@ -218,7 +218,7 @@ enabled for a better experience. Furthermore, most optional modules have been
 disabled, so that they can be enabled whenever you need them:
 
 ```
-wget https://github.com/StephanvanSchaik/gentoo-on-arm/configs/sun7i-config -O .config
+wget https://raw.github.com/StephanvanSchaik/gentoo-on-arm/master/configs/sun7i-config -O .config
 ```
 
 Or, if you'd rather want to use the default configuration:
