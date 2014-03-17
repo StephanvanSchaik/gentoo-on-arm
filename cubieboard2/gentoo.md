@@ -141,8 +141,8 @@ tar xjpf stage3-armv7a_hardfp-*.tar.bz2 -C /mnt/gentoo
 Edit the /etc/fstab to look this:
 
 ```
-${bootfs}	      /boot			                ext2    noauto,noatime          1 2
-${rootfs}	      /			                    ext4    noatime                 0 1
+${bootfs}       /boot                   ext2    noauto,noatime          1 2
+${rootfs}       /                       ext4    noatime                 0 1
 none            /var/tmp/portage        tmpfs   size=1024M,noatime      0 0
 ```
 
@@ -200,33 +200,45 @@ section in the Gentoo handbook for ARM.
 
 # Building the Linux kernel.
 
-Since the Cubieboard 2 isn't being fully supported by the mainline Linux kernel
-yet, we'll be cloning the sunxi-linux repository, or more specifically the latest
-revision of the sunxi-3.4 branch:
+Since Allwinner A20 isn't being fully supported by the mainline Linux kernel
+yet, we'll be cloning the sunxi-linux repository, or more specifically, the
+latest revision of the sunxi-3.4 branch:
 
 ```
 git clone --depth 1 git://github.com/linux-sunxi/linux-sunxi.git -b sunxi-3.4
-```
-
-Now that we have cloned the kernel, we have to check out the right branch, for
-the Cubieboard 2 the sunxi-3.4 branch is fine. In addition to that we'll need a
-good default configuration for the kernel, since the Cubieboard 2 uses an
-Allwinner A20, we'll be using sun7i_defconfig:
-
-```
 cd linux-sunxi
+```
+
+After cloning the repository, we have to configure the kernel for the board in
+question. In addition to the default configuration that is available within the
+cloned repository, there is also a [stripped-down version](
+../configs/sun7i-config), for which all optional modules have been disabled:
+
+```
+wget https://github.com/StephanvanSchaik/gentoo-on-arm/configs/sun7i-config -O .config
+```
+
+Or, if you'd rather want to use the default configuration:
+
+```
 CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make sun7i_defconfig
-CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make uImage modules
-CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make INSTALL_MOD_PATH=/mnt/gentoo modules_install
+```
+
+Whereupon we can start building the kernel and its modules (for a faster
+compilation, you can specify -jn, where n is the amount of threads + 1):
+
+```
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make -j3 uImage modules
 ```
 
 # Installing the kernel.
 
-Installing the kernel is pretty straight-forward:
+Installing the kernel and its modules is pretty straight-forward:
 
 ```
 mount ${bootfs} /mnt/gentoo/boot
 cp arch/arm/boot/uImage /mnt/gentoo/boot/
+CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi- ARCH=arm make INSTALL_MOD_PATH=/mnt/gentoo modules_install
 ```
 
 # Further configuration.
