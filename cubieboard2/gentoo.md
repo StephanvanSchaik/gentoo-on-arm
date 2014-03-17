@@ -172,30 +172,17 @@ www-client/firefox notmpfs.conf
 
 ## Configuring the network settings.
 
-The ethernet driver may not be loaded automatically, in that case you can
-modprobe it:
-
-```
-modprobe sunxi_emac
-```
-
-Or you can add the module to /etc/conf.d/modules, if you want it to be always
-loaded on boot:
-
-```
-modules="... sunxi_emac"
-```
-
-Another thing to keep in mind is that the device does not have an EEPROM with
-information on the network interface controller such as the MAC-address.
-Therefore a random MAC-address is generated upon boot, however, if you desire to
-use a static MAC-address, you can set one in /etc/conf.d/net:
+The device may not have an EEPROM with information on the network interface
+controller, such as the MAC-address, in which case a random one will be
+generated upon boot. However, if you desire to use a static MAC-address, you can
+set one in /etc/conf.d/net:
 
 ```
 mac_eth0="00:00:00:00:00:00"
 ```
 
-For everything else refer to the [Networking Information](http://www.gentoo.org/doc/en/handbook/handbook-arm.xml?part=1&chap=8#doc_chap2)
+For all other settings related to networking, please refer to the
+[Networking Information](http://www.gentoo.org/doc/en/handbook/handbook-arm.xml?part=1&chap=8#doc_chap2)
 section in the Gentoo handbook for ARM.
 
 # Building the Linux kernel.
