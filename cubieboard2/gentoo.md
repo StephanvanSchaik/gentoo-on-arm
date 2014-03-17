@@ -126,7 +126,7 @@ dd if=/dev/zero of=${disk} bs=1024 count=128 seek=552
 
 # Setting up the root partition.
 
-Choose your [http://www.gentoo.org/main/en/mirrors2.xml](favourite mirror) to
+Choose your [favourite mirror](http://www.gentoo.org/main/en/mirrors2.xml) to
 download the armv7a-hardfloat-linux-gnueabi stage3 tarball from, and extract it
 to your root partition upon mounting it:
 
