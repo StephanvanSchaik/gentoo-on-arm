@@ -212,7 +212,10 @@ cd linux-sunxi
 After cloning the repository, we have to configure the kernel for the board in
 question. In addition to the default configuration that is available within the
 cloned repository, there is also a [stripped-down version](
-../configs/sun7i-config), for which all optional modules have been disabled:
+../configs/sun7i-config). For the stripped-down version several sunxi-specific
+modules, such as sunxi_emac, sunxi_gmac, sunxi_leds and sunxi_nand, have been
+enabled for a better experience. Furthermore, most optional modules have been
+disabled, so that they can be enabled whenever you need them:
 
 ```
 wget https://github.com/StephanvanSchaik/gentoo-on-arm/configs/sun7i-config -O .config
